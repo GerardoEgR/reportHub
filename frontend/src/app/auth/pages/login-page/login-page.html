@@ -1,0 +1,115 @@
+<div class="flex items-center justify-center min-h-screen min-w-screen overflow-hidden">
+  <div class="flex flex-col- items-center justify-center">
+    <div
+      class="border border-slate-700 rounded-[56px] bg-gradient-to-b from-slate-700 via-slate-700/10 to-transparent"
+    >
+      <div class="w-full py-20 px-8 sm:px-20">
+        <div class="text-center mb-8">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="48"
+            height="48"
+            viewBox="0 0 48 48"
+            class="mb-8 w-16 shrink-0 mx-auto"
+          >
+            <g fill="none" stroke="currentColor" stroke-linejoin="round" stroke-width="4">
+              <path fill="currentColor" d="M36 35H12V21c0-6.627 5.373-12 12-12s12 5.373 12 12z" />
+              <path stroke-linecap="round" d="M8 42h32M4 13l3 1m6-10l1 3m-4 3L7 7" />
+            </g>
+          </svg>
+          <div class="text-3xl font-medium mb-4">Bienvenido a ReportHub!</div>
+          <span class="text-muted-color font-medium">Inicia sesión para continuar</span>
+        </div>
+
+        <!-- <div> -->
+        <!--   <label for="email1" class="block text-xl font-medium mb-2">Correo</label> -->
+        <!--   <input -->
+        <!--     pInputText -->
+        <!--     id="email1" -->
+        <!--     type="text" -->
+        <!--     placeholder="Correo electrónico" -->
+        <!--     class="w-full md:w-120 mb-8" -->
+        <!--   /> -->
+        <!---->
+        <!--   <label for="password1" class="block font-medium text-xl mb-2">Contrseña</label> -->
+        <!--   <p-password -->
+        <!--     id="password1" -->
+        <!--     placeholder="Contraseña" -->
+        <!--     [toggleMask]="true" -->
+        <!--     class="mb-4" -->
+        <!--     [fluid]="true" -->
+        <!--     [feedback]="false" -->
+        <!--   ></p-password> -->
+        <!---->
+        <!--   <p-button -->
+        <!--     label="Iniciar sesión" -->
+        <!--     variant="outlined" -->
+        <!--     severity="secondary" -->
+        <!--     styleClass="w-full !border-slate-700 !text-white hover:!bg-slate-700 mt-8" -->
+        <!--     routerLink="/" -->
+        <!--   ></p-button> -->
+        <!-- </div> -->
+
+        <p-toast />
+        <div class="card flex justify-center">
+          <form
+            #exampleForm="ngForm"
+            (ngSubmit)="onSubmit(exampleForm)"
+            class="flex flex-col gap-4 w-full"
+          >
+            <div class="flex flex-col gap-1">
+              <p-floatlabel variant="on">
+                <input
+                  pInputText
+                  type="email"
+                  id="email"
+                  name="email"
+                  [(ngModel)]="user.email"
+                  #email="ngModel"
+                  required
+                  email
+                  [invalid]="email.invalid && (email.touched || exampleForm.submitted)"
+                  class="w-full"
+                />
+                <label for="on_label">Correo</label>
+              </p-floatlabel>
+              @if (email.invalid && (email.touched || exampleForm.submitted)) {
+                <p-message severity="error" size="small" variant="simple">
+                  @if (email.hasError('required')) {
+                    Es necesario ingresar un correo para continuar.
+                  }
+                  @if (email.hasError('email')) {
+                    Por favor ingrese un correo válido.
+                  }
+                </p-message>
+              }
+            </div>
+            <div class="flex flex-col gap-1">
+              <p-floatlabel variant="on">
+                <p-password
+                  #model="ngModel"
+                  [(ngModel)]="value"
+                  [invalid]="model.invalid && (model.touched || exampleForm.submitted)"
+                  name="password"
+                  [feedback]="false"
+                  autocomplete="off"
+                  required
+                  fluid
+                />
+                <label for="on_label">Contraseña</label>
+              </p-floatlabel>
+              @if (model.invalid && (model.touched || exampleForm.submitted)) {
+                <p-message severity="error" size="small" variant="simple"
+                  >Es necesario ingresar una contraseña para continuar.</p-message
+                >
+              }
+            </div>
+            <button pButton severity="secondary" type="submit">
+              <span pButtonLabel>Iniciar sesión</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
