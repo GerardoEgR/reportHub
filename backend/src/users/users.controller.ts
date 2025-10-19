@@ -11,14 +11,13 @@ export class UsersController {
     return this.usersService.create(createUserDto);
   }
 
+  // @Get(':id')
+  // findOneById(@Param('id') id: string) {
+  //   return this.usersService.findOneById(id);
+  // }
   // @Get()
   // findAll() {
   //   return this.usersService.findAll();
-  // }
-
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.usersService.findOne(+id);
   // }
 
   // @Patch(':id')

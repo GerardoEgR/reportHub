@@ -3,11 +3,20 @@
  * Utiliza TypeORM para interactuar con la base de datos y gestionar las entidades de usuario.
  *
  */
-import { BadRequestException, Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { CreateUserDto } from './dto/create-user.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entities/user.entity';
 import { Repository } from 'typeorm';
+import * as bcrypt from 'bcrypt';
+import { plainToInstance } from 'class-transformer';
+import { UserResponseDto } from './dto/user-response.dto';
+import { LoginDto } from '../auth/dto/login.dto';
 
 @Injectable()
 export class UsersService {
@@ -18,19 +27,50 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDto) {
     try {
-      const user = this.usersRepository.create(createUserDto);
-      return await this.usersRepository.save(user);
+      const { password, ...userData } = createUserDto;
+
+      const user = this.usersRepository.create({
+        ...userData,
+        password: bcrypt.hashSync(password, 10), // Encripta la contraseña antes de guardarla.j
+      });
+
+      await this.usersRepository.save(user);
+
+      // Transforma la entidad User a UserResponseDto antes de devolverla para excluir la contraseña.
+      return plainToInstance(UserResponseDto, user, { excludeExtraneousValues: true });
+      // TODO: retornar el JWT de acceso
     } catch (error) {
       this.handleDbErrors(error);
     }
   }
 
+  async findOneByEmail(loginDto: LoginDto) {
+    const { email, password } = loginDto;
+    const user = await this.usersRepository.findOne({
+      where: { email },
+      select: {
+        email: true,
+        password: true,
+        id: true,
+        fullName: true,
+        isActive: true,
+        roles: true,
+      },
+    });
+    if (!user) throw new UnauthorizedException('Credenciales incorrectas'); // Usuario no encontrado
+
+    // Contraseña incorrecta
+    if (!bcrypt.compareSync(password, user.password))
+      throw new UnauthorizedException('Credenciales incorrectas');
+
+    return plainToInstance(UserResponseDto, user, { excludeExtraneousValues: true }); // Retorna el usuario sin la contraseña
+  }
+
+  // findOneById(id: string) {
+  //   return this.usersRepository.findOneBy({ id });
+  // }
   // findAll() {
   //   return `This action returns all users`;
-  // }
-
-  // findOne(id: number) {
-  //   return `This action returns a #${id} user`;
   // }
 
   // update(id: number, updateUserDto: UpdateUserDto) {
