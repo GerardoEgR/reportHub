@@ -25,9 +25,9 @@ export class UsersService {
     return await this.usersRepository.findOne({
       where: { email },
       select: {
+        id: true,
         email: true,
         password: true,
-        id: true,
         fullName: true,
         isActive: true,
         roles: true,

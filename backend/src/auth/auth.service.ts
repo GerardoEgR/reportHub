@@ -44,7 +44,7 @@ export class AuthService {
 
       return {
         ...userResponse,
-        token: this.getJwtToken({ email: userResponse.email }),
+        token: this.getJwtToken({ id: userResponse.id }),
       };
     } catch (error) {
       this.handleDbErrors(error);
@@ -67,7 +67,7 @@ export class AuthService {
     const userResponse = plainToInstance(UserResponseDto, user, { excludeExtraneousValues: true }); // Retorna el usuario sin la contraseña
     return {
       ...userResponse,
-      token: this.getJwtToken({ email: userResponse.email }),
+      token: this.getJwtToken({ id: userResponse.id }),
     };
   }
 

@@ -2,6 +2,8 @@ import { Controller, Post, Body } from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LoginDto } from './dto/login.dto';
 import { CreateUserDto } from '../users/dto/create-user.dto';
+import { Auth } from './decorators/auth/auth.decorator';
+import { ValidRoles } from './interfaces/valid-roles';
 
 /**
  * Controlador de autenticación que maneja las rutas de registro e inicio de sesión.
@@ -12,6 +14,7 @@ export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   @Post('register')
+  @Auth(ValidRoles.admin)
   registerUser(@Body() createUserDto: CreateUserDto) {
     return this.authService.register(createUserDto);
   }

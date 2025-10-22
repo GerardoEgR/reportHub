@@ -9,7 +9,7 @@ export class User {
   @Column('text', { unique: true })
   email: string;
 
-  @Exclude() // Excluye la propiedad cuando se transforma
+  @Exclude() // Excluye la propiedad cuando se transforma.
   @Column('text')
   password: string;
 
