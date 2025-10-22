@@ -12,6 +12,7 @@ import { plainToInstance } from 'class-transformer';
 import { UserResponseDto } from '../users/dto/user-response.dto';
 import { JwtService } from '@nestjs/jwt';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
+import { User } from '../users/entities/user.entity';
 
 /**
  * Servicio de autenticación que maneja la lógica de negocio para el registro e inicio de sesión de usuarios.
@@ -68,6 +69,13 @@ export class AuthService {
     return {
       ...userResponse,
       token: this.getJwtToken({ id: userResponse.id }),
+    };
+  }
+
+  checkAuthStatus(user: User) {
+    return {
+      ...user,
+      token: this.getJwtToken({ id: user.id }),
     };
   }
 

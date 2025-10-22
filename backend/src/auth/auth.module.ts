@@ -9,6 +9,10 @@ import { JwtStrategy } from './strategies/jwt.strategy';
 import { User } from '../users/entities/user.entity';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
+/**
+ * Módulo de autenticación que configura JWT y Passport para la gestión de usuarios.
+ * Para utilizar la protección de rutas, se debe importar este módulo en el módulo donde se desee aplicar.
+ */
 @Module({
   controllers: [AuthController],
   providers: [AuthService, JwtStrategy],
@@ -27,6 +31,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       }),
     }),
   ],
-  exports: [JwtStrategy, PassportModule, JwtModule],
+  exports: [TypeOrmModule, JwtStrategy, PassportModule, JwtModule],
 })
 export class AuthModule {}
