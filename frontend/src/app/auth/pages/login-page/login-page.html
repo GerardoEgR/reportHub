@@ -43,18 +43,17 @@
           <div>
             <label
               for="email"
-              class="block text-sm/6 font-medium text-blue-200 text-shadow-[1px_2px_1px_rgb(0_0_0_/_0.7)]"
-              >Correo</label
+              class="block text-sm/6 font-medium text-blue-200 text-shadow-[1px_2px_1px_rgb(0_0_0_/_0.8)]"
+              >Email address</label
             >
             <div class="mt-2">
               <input
-                pInputText
                 id="email"
                 type="email"
                 name="email"
                 required
                 autocomplete="email"
-                class="block w-full rounded-md !bg-white/5 text-base text-white sm:text-sm/6"
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               />
             </div>
           </div>
@@ -63,95 +62,32 @@
             <div class="flex items-center justify-between">
               <label
                 for="password"
-                class="block text-sm/6 font-medium text-blue-200 text-shadow-[1px_2px_1px_rgb(0_0_0_/_0.7)]"
-                >Constraseña</label
+                class="block text-sm/6 font-medium text-blue-200 text-shadow-[1px_2px_1px_rgb(0_0_0_/_0.8)]"
+                >Password</label
               >
             </div>
-            <div class="mt-2 mb-10">
-              <p-password
-                id="password1"
-                [toggleMask]="true"
-                [fluid]="true"
-                [feedback]="false"
-                [inputStyleClass]="'!bg-white/5'"
+            <div class="mt-2">
+              <input
+                id="password"
+                type="password"
+                name="password"
+                required
+                autocomplete="current-password"
+                class="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
               />
             </div>
           </div>
 
           <div>
-            <p-button
-              label="Iniciar sesión"
-              icon="pi pi-sign-in"
-              styleClass="!bg-blue-300 w-full"
-              size="small"
-            />
+            <button
+              type="submit"
+              class="flex w-full justify-center rounded-md bg-blue-400/80 px-3 py-1.5 text-sm/6 font-semibold text-white text-shadow-[2px_1px_2px_rgb(0_0_0_/_0.9)] hover:bg-blue-400/60 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+            >
+              Sign in
+            </button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </div>
-
-<!--         <p-toast /> -->
-<!--         <div class="card flex justify-center"> -->
-<!--           <form -->
-<!--             #exampleForm="ngForm" -->
-<!--             (ngSubmit)="onSubmit(exampleForm)" -->
-<!--             class="flex flex-col gap-4 w-full" -->
-<!--           > -->
-<!--             <div class="flex flex-col gap-1"> -->
-<!--               <p-floatlabel variant="on"> -->
-<!--                 <input -->
-<!--                   pInputText -->
-<!--                   type="email" -->
-<!--                   id="email" -->
-<!--                   name="email" -->
-<!--                   [(ngModel)]="user.email" -->
-<!--                   #email="ngModel" -->
-<!--                   required -->
-<!--                   email -->
-<!--                   [invalid]="email.invalid && (email.touched || exampleForm.submitted)" -->
-<!--                   class="w-full" -->
-<!--                 /> -->
-<!--                 <label for="on_label">Correo</label> -->
-<!--               </p-floatlabel> -->
-<!--               @if (email.invalid && (email.touched || exampleForm.submitted)) { -->
-<!--                 <p-message severity="error" size="small" variant="simple"> -->
-<!--                   @if (email.hasError('required')) { -->
-<!--                     Es necesario ingresar un correo para continuar. -->
-<!--                   } -->
-<!--                   @if (email.hasError('email')) { -->
-<!--                     Por favor ingrese un correo válido. -->
-<!--                   } -->
-<!--                 </p-message> -->
-<!--               } -->
-<!--             </div> -->
-<!--             <div class="flex flex-col gap-1"> -->
-<!--               <p-floatlabel variant="on"> -->
-<!--                 <p-password -->
-<!--                   #model="ngModel" -->
-<!--                   [(ngModel)]="value" -->
-<!--                   [invalid]="model.invalid && (model.touched || exampleForm.submitted)" -->
-<!--                   name="password" -->
-<!--                   [feedback]="false" -->
-<!--                   autocomplete="off" -->
-<!--                   required -->
-<!--                   fluid -->
-<!--                 /> -->
-<!--                 <label for="on_label">Contraseña</label> -->
-<!--               </p-floatlabel> -->
-<!--               @if (model.invalid && (model.touched || exampleForm.submitted)) { -->
-<!--                 <p-message severity="error" size="small" variant="simple" -->
-<!--                   >Es necesario ingresar una contraseña para continuar.</p-message -->
-<!--                 > -->
-<!--               } -->
-<!--             </div> -->
-<!--             <button pButton severity="secondary" type="submit"> -->
-<!--               <span pButtonLabel>Iniciar sesión</span> -->
-<!--             </button> -->
-<!--           </form> -->
-<!--         </div> -->
-<!--       </div> -->
-<!--     </div> -->
-<!--   </div> -->
-<!-- </div> -->
