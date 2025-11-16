@@ -45,6 +45,9 @@ importers:
       '@angular/compiler-cli':
         specifier: 20.3.0
         version: 20.3.0(@angular/compiler@20.3.0)(typescript@5.9.2)
+      '@angular/language-service':
+        specifier: ^20.3.11
+        version: 20.3.11
       '@eslint/js':
         specifier: ^9.38.0
         version: 9.38.0
@@ -327,6 +330,10 @@ packages:
       '@angular/core': 20.3.0
       '@angular/platform-browser': 20.3.0
       rxjs: ^6.5.3 || ^7.4.0
+
+  '@angular/language-service@20.3.11':
+    resolution: {integrity: sha512-/BwIcw6OQ1/p6Kr/ywQ6xXwT5BZXWzwW67gJuiv7ZktK/ohuPsys51kcpm4oSBnpQFw1n+vUnscGUSrz/cHlTA==}
+    engines: {node: ^20.19.0 || ^22.12.0 || >=24.0.0}
 
   '@angular/platform-browser@20.3.0':
     resolution: {integrity: sha512-/KsgfxDwP7/KXGrLLSyg4+Xd8HxmHi5dVCu+xHfa3QjzVIvvZfWZLxQj7guRlDtg/mz+t0/OSKvSUZzOAfVzGQ==}
@@ -3987,6 +3994,8 @@ snapshots:
       '@angular/platform-browser': 20.3.0(@angular/animations@20.3.0(@angular/core@20.3.0(@angular/compiler@20.3.0)(rxjs@7.8.0)(zone.js@0.15.0)))(@angular/common@20.3.0(@angular/core@20.3.0(@angular/compiler@20.3.0)(rxjs@7.8.0)(zone.js@0.15.0))(rxjs@7.8.0))(@angular/core@20.3.0(@angular/compiler@20.3.0)(rxjs@7.8.0)(zone.js@0.15.0))
       rxjs: 7.8.0
       tslib: 2.3.0
+
+  '@angular/language-service@20.3.11': {}
 
   '@angular/platform-browser@20.3.0(@angular/animations@20.3.0(@angular/core@20.3.0(@angular/compiler@20.3.0)(rxjs@7.8.0)(zone.js@0.15.0)))(@angular/common@20.3.0(@angular/core@20.3.0(@angular/compiler@20.3.0)(rxjs@7.8.0)(zone.js@0.15.0))(rxjs@7.8.0))(@angular/core@20.3.0(@angular/compiler@20.3.0)(rxjs@7.8.0)(zone.js@0.15.0))':
     dependencies:
